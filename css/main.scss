@@ -1,0 +1,272 @@
+@font-face {
+  font-family: BebasNeue;
+  src: url(/fonts/BebasNeue-webfont.woff);
+}
+
+body {
+  font-family: "Lato";
+  font-size: 16px;
+  h1 {
+    font-family: "BebasNeue";
+  }
+
+  h2 {
+    font-family: "BebasNeue";
+    color: #016008;
+  }
+
+  ul {
+    list-style: none;
+  }
+}
+
+section + footer{
+    margin-top: 20px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.1fr 0 0.5fr 1fr 0.1fr;
+  grid-row-gap: 1em;
+  grid-template-areas:
+    "header"
+    "navigation"
+    "welcome"
+    "news"
+    "contact";
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: 1024px) {
+    grid-template-rows: 0.1fr 0.1fr 0.5fr 1fr 0.1fr;
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #cccccc;
+    padding: 15px;
+  }
+}
+
+.header {
+  grid-area: header;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  .header__logo {
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 2px 2px #3e3e3e;
+    @media screen and (min-width: 1024px) {
+      margin-left: 0;
+    }
+    span {
+      float: left;
+      font-family: "BebasNeue";
+      font-size: 4em;
+      color: #016008;
+      @media screen and (min-width: 1024px) {
+        font-size: 6em;
+      }
+      &:last-child {
+        font-size: 3rem;
+        margin-top: 0.3em;
+        @media screen and (min-width: 1024px) {
+          font-size: 5rem;
+          margin-top: 0.18em;
+        }
+      }
+    }
+  }
+
+  &__sitemap {
+    &__button {
+      visibility: visible;
+      padding-top: 90px;
+      width: 100px;
+
+      text-align: center;
+      margin-left: 80px;
+      //   margin-right: auto;
+      p {
+        border: 5px solid #000;
+        border-radius: 100px;
+        font-size: 1.5em;
+      }
+      @media screen and (min-width: 1024px) {
+        visibility: hidden;
+      }
+    }
+    ul {
+      visibility: hidden;
+      float: right;
+      li {
+        float: left;
+        margin-left: 1em;
+        margin-right: 1em;
+        color: #016008;
+        cursor: pointer;
+      }
+      @media screen and (min-width: 1024px) {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.navigation {
+  grid-area: navigation;
+  visibility: hidden;
+  ul {
+    li {
+      font-family: "BebasNeue";
+      float: left;
+      margin-right: 2em;
+      background-color: #cccccc;
+      border: 1px solid #000;
+      box-shadow: 2px 2px #3e3e3e;
+      padding: 3px 20px;
+      cursor: pointer;
+    }
+    &:first-child {
+      margin-left: -35px;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    visibility: visible;
+  }
+}
+
+.welcome {
+  grid-area: welcome;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "message" "image";
+  @media screen and (min-width: 1024px) {
+    border: 1px solid #cccccc;
+    padding: 10px;
+    margin: 20px 10px;
+    grid-template-columns: 1fr 1fr;
+  }
+  &__image {
+    grid-area: image;
+    @media screen and (min-width: 1024px) {
+      border: 1px solid #cccccc;
+      grid-area: unset;
+    }
+
+    justify-self: start;
+  }
+
+  &__message {
+    grid-area: message;
+    line-height: 1.5em;
+    @media screen and (min-width: 1024px) {
+      grid-area: unset;
+    }
+    a {
+      text-decoration: none;
+      color: #016008;
+      &:hover {
+        color: #ff0000;
+      }
+    }
+  }
+}
+
+.news {
+  grid-area: news;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1em;
+  @media screen and (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    border: 1px solid #cccccc;
+    padding: 10px;
+  }
+  &__shop {
+    @media screen and (min-width: 1024px) {
+      grid-column: 1/3;
+      grid-row: 1/4;
+    }
+    ul {
+      background-color: #cccccc;
+      padding: 5px;
+      > li {
+        > p {
+          color: #016008;
+          span {
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+
+  &__latest {
+    background-color: #cccccc;
+    padding: 5px;
+    a {
+      color: #016008;
+    }
+    span {
+      padding: 20px;
+      float: right;
+      font-style: italic;
+    }
+    @media screen and (min-width: 1024px) {
+      grid-column: 3/3;
+      grid-row: 1/1;
+    }
+  }
+
+  &__subscribe {
+    background-color: #cccccc;
+    padding: 5px;
+    @media screen and (min-width: 1024px) {
+      grid-column: 3/4;
+      grid-row: 2/4;
+    }
+
+    form {
+      margin-top: 10px;
+      height: 200px;
+      display: grid;
+      grid-template-columns: 1fr;
+      fieldset {
+        background-color: #fff;
+        legend {
+          font-family: "BebasNeue";
+          font-size: 1.5em;
+        }
+        label {
+          &[for="email"] span {
+            color: #ff0000;
+          }
+        }
+        & input {
+            margin-top: 5px;
+            margin-bottom: 5px;
+          &[type="text"] {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.contact {
+    grid-area: contact;
+    background-color: #cccccc;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 10px;
+    span {
+      &:first-child {
+        height: 3.5em;
+        margin-top: -15px;
+      }
+    }
+  }
